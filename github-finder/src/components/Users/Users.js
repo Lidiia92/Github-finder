@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import UserItem from './UserItem';
 import Spinner from '../Spinner';
+import PropTypes from 'prop-types';
 
 const Users = (props) => {
 
@@ -17,6 +18,11 @@ const Users = (props) => {
         )
     }
 
+}
+
+Users.prototypes = {
+    users: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired
 }
 
 const usersStyle = {
