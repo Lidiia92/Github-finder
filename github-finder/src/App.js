@@ -13,7 +13,7 @@ class App extends Component {
 
   async componentDidMount() {
     this.setState({loading: true});
-    const res = await axios.get('https://github.com/defunkt/users');
+    const res = await axios.get('https://api.github.com/users');
     this.setState({users: res.data, loading: false});
   }
 
@@ -22,7 +22,7 @@ class App extends Component {
         <div className="App">
             <NavBar />
             <div className="container">
-              <Users />
+              <Users loading={this.state.loading} users={this.state.users}/>
             </div>
         </div>
       );
