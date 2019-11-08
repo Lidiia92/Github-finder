@@ -21,8 +21,10 @@ NavBar.defaultProps = {
     title: 'Github Finder'
 }
 
+
 NavBar.prpTypes = {
     title: PropTypes.string.isRequired
 }
+
 
 export default NavBar
