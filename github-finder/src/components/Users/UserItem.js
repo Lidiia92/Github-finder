@@ -18,6 +18,8 @@ const UserItem = (props) => {
 
 }
 
+
+
 UserItem.propTypes = {
     user: PropTypes.object.isRequired,
 }
