@@ -7,6 +7,7 @@ import Users from './components/Users/Users';
 import User from './components/Users/User';
 import Search from './components/Users/Search';
 import About from './components/pages/About';
+import GitHubState from './context/github/GitHubState';
 import './App.css';
 
 const App = () => {
@@ -59,29 +60,31 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <div className="App">
-          <NavBar />
-          <div className="container">
-            <Alert alert={alert}/>
+    <GitHubState>
+      <Router>
+        <div className="App">
+            <NavBar />
+            <div className="container">
+              <Alert alert={alert}/>
 
-            <Switch>
-              <Route exact path="/" render={props => (
-                <Fragment>
-                  <Search searchUsers={searchUsers} clearUsers={clearUsers} showClear={users.length > 0 ? true : false} setAlert={setAlertMessage}/>
-                  <Users loading={loading} users={users}/>
-                </Fragment>
-              )} />
+              <Switch>
+                <Route exact path="/" render={props => (
+                  <Fragment>
+                    <Search searchUsers={searchUsers} clearUsers={clearUsers} showClear={users.length > 0 ? true : false} setAlert={setAlertMessage}/>
+                    <Users loading={loading} users={users}/>
+                  </Fragment>
+                )} />
 
-              <Route exact path="/about" component={About} />
-              <Route exact path="/user/:username" render={props => (
-                <User {...props} getUser={getUser} user={user} loading={loading} getUserRepos={getUserRepos} repos={repos}/>
-              )}/>
-            </Switch>
+                <Route exact path="/about" component={About} />
+                <Route exact path="/user/:username" render={props => (
+                  <User {...props} getUser={getUser} user={user} loading={loading} getUserRepos={getUserRepos} repos={repos}/>
+                )}/>
+              </Switch>
 
-          </div>
-      </div>
-    </Router>
+            </div>
+        </div>
+      </Router>
+    </GitHubState>
   );
 }
 
